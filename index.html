@@ -7,9 +7,19 @@
     <script src="jspm.config.js"></script>
 </head>
 <body>
-  <div id="container"></div>
-  <script>
-    SystemJS.import('app');
-  </script>
+    <div id="container"></div>
+
+    <script>
+        function addScript( src,callback) {
+            var s = document.createElement( 'script' );
+            s.setAttribute( 'src', src );
+            s.onload=callback;
+            document.body.appendChild( s );
+        }
+        addScript('app-bundle.js', function() {
+            SystemJS.import('app');
+        });
+    </script>
+
 </body>
 </html>
